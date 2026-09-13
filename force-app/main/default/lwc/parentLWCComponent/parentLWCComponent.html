@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="My Dashboard" icon-name="standard:dashboard">
+        <div class="slds-m-around_medium">
+            <!-- Option A: Passing a hardcoded static string -->
+            <c-counter-card card-title="Sales Team Tracker"></c-counter-card>
+
+            <!-- Option B: Passing dynamic data using a parent variable -->
+            <c-counter-card card-title={parentDashboardTitle}></c-counter-card>
+        </div>
+    </lightning-card>
+</template>

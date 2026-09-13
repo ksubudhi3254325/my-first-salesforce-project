@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Component Attributes -->
+    <aura:attribute name="clickCount" type="Integer" default="0"/>
+    
+    <!-- Init Handler: Injects the button as soon as the component loads -->
+    <aura:handler name="init" value="{!this}" action="{!c.injectSubmitButton}"/>
+
+    <lightning:card title="Programmatic Component Injection" iconName="utility:insert_tag" class="slds-p-around_medium">
+        <div class="slds-form slds-form_stacked">
+            
+            <p class="slds-m-bottom_medium">
+                The submit button below does not exist in the markup file. It is created dynamically by the JavaScript controller.
+            </p>
+            
+            <!-- THE TARGET CONTAINER
+                 This is an empty div wrapper where our dynamic button will be pushed into -->
+            <div aura:id="buttonContainer" class="slds-box slds-theme_shade slds-align_absolute-center slds-p-around_medium">
+                <!-- Dynamic button will appear here -->
+            </div>
+            
+            <!-- Simple status tracker to show the action works -->
+            <div class="slds-m-top_medium slds-text-title_caps">
+                Form Submission Count: <strong>{!v.clickCount}</strong>
+            </div>
+
+        </div>
+    </lightning:card>
+</aura:component>

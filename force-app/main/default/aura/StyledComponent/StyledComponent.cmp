@@ -1,0 +1,15 @@
+<!-- StyledComponent.cmp -->
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <!-- Notice how we use standard HTML and Lightning components together -->
+    <div class="THIS custom-card">
+        <h2 class="card-title">Interactive Profile Card</h2>
+        <p class="card-description">
+            This component demonstrates how custom CSS applies to Aura elements.
+        </p>
+        
+        <!-- You can also style nested standard elements or framework components -->
+        <div class="button-container">
+            <lightning:button label="Action Button" variant="brand" class="custom-btn" />
+        </div>
+    </div>
+</aura:component>

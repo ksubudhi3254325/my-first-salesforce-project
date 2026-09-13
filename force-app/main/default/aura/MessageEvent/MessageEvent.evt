@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event to pass data from child to parent">
+    <!-- Define the attributes/data you want to pass -->
+    <aura:attribute name="messageText" type="String" />
+</aura:event>

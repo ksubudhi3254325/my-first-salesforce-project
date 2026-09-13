@@ -1,0 +1,12 @@
+<!-- ReceiverComponent.cmp -->
+<aura:component>
+    <aura:attribute name="receivedData" type="String" default="Waiting for broadcast..." />
+
+    <!-- Handle the application event. Notice there is NO 'name' attribute here -->
+    <aura:handler event="c:AppDataEvent" action="{!c.handleBroadcast}"/>
+
+    <div class="slds-box slds-theme_shade">
+        <h3>Receiver Component (Listener)</h3>
+        <p>Broadcast Data Received: <strong>{!v.receivedData}</strong></p>
+    </div>
+</aura:component>

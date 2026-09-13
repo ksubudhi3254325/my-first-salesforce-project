@@ -1,0 +1,62 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Component Attributes -->
+    <aura:attribute name="textValue" type="String" default=""/>
+    <aura:attribute name="dateValue" type="Date" default=""/>
+    <aura:attribute name="emailValue" type="String" default=""/>
+   <!-- 1. Declare an attribute for the options list -->
+    <aura:attribute name="contactOptions" type="List" default="[
+        {'label': 'Email', 'value': 'email'},
+        {'label': 'Phone', 'value': 'phone'}
+    ]"/>
+    
+    <lightning:card title="Input Validation Form" iconName="utility:check" class="slds-p-around_medium">
+        <div class="slds-form slds-form_stacked">
+            
+            <!-- Text Input: Required & Min/Max Length -->
+            <lightning:input aura:id="validateField" 
+                             label="Full Name (Required, 3-20 characters)" 
+                             value="{!v.textValue}" 
+                             required="true"
+                             minlength="3"
+                             maxlength="20"
+                             messageWhenValueMissing="Please enter your full name."
+                             messageWhenTooShort="Name must be at least 3 characters."
+                             class="slds-m-bottom_small"/>
+            
+            <!-- Date Input: Required & Custom Range -->
+            <lightning:input aura:id="validateField" 
+                             type="date" 
+                             label="Future Appointment Date" 
+                             value="{!v.dateValue}" 
+                             required="true"
+                             min="2026-01-01" 
+                             messageWhenValueMissing="An appointment date is required."
+                             class="slds-m-bottom_small"/>
+            
+            <!-- Email Input: Native Standard Validation -->
+            <lightning:input aura:id="validateField" 
+                             type="email" 
+                             label="Email Address" 
+                             value="{!v.emailValue}" 
+                             required="true"
+                             messageWhenTypeMismatch="Please enter a valid email format."
+                             class="slds-m-bottom_small"/>
+                             
+            <!-- Radio Group Input: Select Option Validation -->
+            <lightning:radioGroup aura:id="validateField" 
+                      name="radioOptions" 
+                      label="Preferred Contact Method" 
+                      options="{!v.contactOptions}" 
+                      value="{!v.radioValue}" 
+                      required="true"/>
+            
+            <!-- Action Button -->
+            <div class="slds-m-top_medium">
+                <lightning:button variant="brand" 
+                                  label="Submit Form" 
+                                  onclick="{!c.handleValidateSubmit}"/>
+            </div>
+            
+        </div>
+    </lightning:card>
+</aura:component>

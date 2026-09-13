@@ -1,0 +1,61 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Attributes to drive the conditional logic -->
+    <aura:attribute name="isFeatureEnabled" type="Boolean" default="false"/>
+    <aura:attribute name="userRole" type="String" default="Standard"/>
+
+    <lightning:card title="Conditional Rendering Example" iconName="utility:preview" class="slds-p-around_medium">
+        
+        <!-- ========================================== -->
+        <!-- EXAMPLE 1: Simple Show/Hide (IF statement)  -->
+        <!-- ========================================== -->
+        <div class="slds-m-bottom_large slds-box">
+            <h2 class="slds-text-heading_small">Example 1: Toggle Visibility</h2>
+            
+            <lightning:input type="toggle" 
+                             label="Show Secret Content" 
+                             checked="{!v.isFeatureEnabled}" 
+                             messageOn="Visible" 
+                             messageOff="Hidden"
+                             class="slds-m-vertical_small"/>
+
+            <!-- The content inside aura:if only renders when isTrue resolves to true -->
+            <aura:if isTrue="{!v.isFeatureEnabled}">
+                <div class="slds-scoped-notification slds-theme_success" role="status">
+                    <p>🎉 Boo! You found the hidden content because the toggle is checked!</p>
+                </div>
+            </aura:if>
+        </div>
+
+
+        <!-- ========================================== -->
+        <!-- EXAMPLE 2: Show Either/Or (IF / ELSE statement) -->
+        <!-- ========================================== -->
+        <div class="slds-box">
+            <h2 class="slds-text-heading_small">Example 2: If / Else Evaluation</h2>
+            
+            <lightning:select name="roleSelect" 
+                              label="Select User Role:" 
+                              value="{!v.userRole}" 
+                              class="slds-m-vertical_small">
+                <option value="Standard">Standard User</option>
+                <option value="Admin">Admin User</option>
+            </lightning:select>
+
+            <!-- Evaluate string comparison expressions directly inside the markup -->
+            <aura:if isTrue="{!v.userRole == 'Admin'}">
+                <!-- Executed if TRUE -->
+                <div class="slds-scoped-notification slds-theme_alert" role="status">
+                    <p>🛠️ <strong>Admin Mode:</strong> You have full read/write/delete access privileges.</p>
+                </div>
+                
+                <!-- Executed if FALSE -->
+                <aura:set attribute="else">
+                    <div class="slds-scoped-notification slds-theme_info" role="status">
+                        <p>👤 <strong>Standard Mode:</strong> You have read-only privileges.</p>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </div>
+
+    </lightning:card>
+</aura:component>

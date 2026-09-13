@@ -1,0 +1,16 @@
+<!-- ParentComponent.cmp -->
+<aura:component>
+    <aura:attribute name="messageFromChild" type="String" default="No message yet" />
+
+    <!-- 1. Handle the event. The 'name' must match the child's 'registerEvent' name -->
+    <aura:handler name="childMessageEvent" event="c:MessageEvent" action="{!c.handleChildEvent}"/>
+
+    <div class="slds-box slds-theme_shade">
+        <h2>Parent Component</h2>
+        <p>Received Message: <strong>{!v.messageFromChild}</strong></p>
+        <hr/>
+        
+        <!-- 2. Include the child component -->
+        <c:ChildComponent />
+    </div>
+</aura:component>

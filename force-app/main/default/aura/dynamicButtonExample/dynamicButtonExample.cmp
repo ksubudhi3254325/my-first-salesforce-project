@@ -1,0 +1,45 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Component Attributes -->
+    <aura:attribute name="actionType" type="String" default="Select"/>
+    <aura:attribute name="isProcessed" type="Boolean" default="false"/>
+
+    <lightning:card title="Dynamic Button Engine" iconName="utility:builder" class="slds-p-around_medium">
+        <div class="slds-form slds-form_stacked">
+            
+            <!-- Dropdown to conditionally change the button configuration -->
+            <lightning:select name="actionSelect" 
+                              label="Choose an Action Strategy:" 
+                              value="{!v.actionType}"
+                              disabled="{!v.isProcessed}"
+                              class="slds-m-bottom_medium">
+                <option value="Select">-- Please Choose --</option>
+                <option value="Save">Save Record</option>
+                <option value="Delete">Delete Record</option>
+                <option value="Reset">Reset Component State</option>
+            </lightning:select>
+
+            <!-- Conditional Rendering Block using aura:if -->
+            <aura:if isTrue="{!v.actionType != 'Select'}">
+                <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                    <p class="slds-m-bottom_small">The button below updates dynamically based on your selection:</p>
+                    
+                    <!-- DYNAMIC BUTTON 
+                         The variant, label, and iconName are dynamically evaluated based on the 'actionType' string -->
+                    <lightning:button 
+                        variant="{!v.actionType == 'Save' ? 'brand' : (v.actionType == 'Delete' ? 'destructive' : 'neutral')}" 
+                        label="{!v.actionType + ' Action Item'}" 
+                        iconName="{!v.actionType == 'Save' ? 'utility:save' : (v.actionType == 'Delete' ? 'utility:delete' : 'utility:refresh')}" 
+                        onclick="{!c.handleDynamicClick}" />
+                </div>
+                
+                <!-- Else Condition when no strategy is selected -->
+                <aura:set attribute="else">
+                    <div class="slds-text-color_weak slds-align_absolute-center slds-p-around_medium" style="border: 1px dashed #dddbda;">
+                        Select an action strategy from the dropdown above to display the dynamic button.
+                    </div>
+                </aura:set>
+            </aura:if>
+            
+        </div>
+    </lightning:card>
+</aura:component>

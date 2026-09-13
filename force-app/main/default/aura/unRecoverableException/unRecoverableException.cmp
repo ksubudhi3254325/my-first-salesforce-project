@@ -1,0 +1,4 @@
+<aura:component >
+    <br/><br/>
+    <lightning:button label="throw error" onclick="{!c.throwError}"/>
+</aura:component>

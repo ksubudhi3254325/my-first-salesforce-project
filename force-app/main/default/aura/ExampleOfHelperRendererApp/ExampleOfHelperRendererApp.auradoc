@@ -1,0 +1,19 @@
+<aura:documentation>
+	<aura:description>
+    
+How they all work together in the life cycle:Initialization: 
+Salesforce loads the SearchBar.cmp.DOM Insertion (Renderer): 
+The framework draws the HTML. As soon as it finishes, SearchBarRenderer.js triggers 
+afterRender(), which finds the input box and places the blinking typing cursor inside it.
+User Action (Controller): The user types a word and clicks the button. 
+This triggers handleSearchClick inside SearchBarController.js.Processing (Helper): 
+The controller calls helper.cleanAndFormatQuery(). The helper sanitizes the text and 
+returns it. The controller then updates the screen with the clean text.
+
+    
+    
+    </aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		Example Description
+	</aura:example>
+</aura:documentation>

@@ -1,0 +1,14 @@
+<!-- ChildComponent.cmp -->
+<aura:component>
+    <!-- 1. Register the event with a local name -->
+    <aura:registerEvent name="childMessageEvent" type="c:MessageEvent"/>
+    
+    <aura:attribute name="userInput" type="String" default="" />
+
+    <div class="slds-box slds-theme_default">
+        <h3>Child Component</h3>
+        <lightning:input label="Enter a message for Parent" value="{!v.userInput}" />
+        <br/>
+        <lightning:button label="Send to Parent" onclick="{!c.fireComponentEvent}" variant="brand"/>
+    </div>
+</aura:component>

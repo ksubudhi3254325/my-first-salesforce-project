@@ -1,0 +1,14 @@
+<!-- SenderComponent.cmp -->
+<aura:component>
+    <!-- Register the event. Note: 'name' is not strictly used by handlers for App events, but required for declaration -->
+    <aura:registerEvent name="appEvent" type="c:AppDataEvent"/>
+    
+    <aura:attribute name="txtInput" type="String" default="" />
+
+    <div class="slds-box slds-theme_default">
+        <h3>Sender Component (Broadcaster)</h3>
+        <lightning:input label="Type global broadcast message" value="{!v.txtInput}" />
+        <br/>
+        <lightning:button label="Broadcast Globally" onclick="{!c.broadcastEvent}" variant="brand"/>
+    </div>
+</aura:component>

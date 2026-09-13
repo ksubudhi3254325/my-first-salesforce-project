@@ -1,0 +1,5 @@
+<!-- AppDataEvent.evt -->
+<aura:event type="APPLICATION" description="Global event to broadcast data">
+    <!-- Define the payload parameters -->
+    <aura:attribute name="sharedMessage" type="String" />
+</aura:event>

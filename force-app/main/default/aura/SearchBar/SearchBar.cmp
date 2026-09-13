@@ -1,0 +1,30 @@
+<aura:component>
+    <!-- Attributes to store search state -->
+    <aura:attribute name="searchQuery" type="String" default="" />
+    <aura:attribute name="formattedQuery" type="String" default="" />
+    
+    <div class="slds-box slds-theme_default">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">Aura Bundle Search Demo</h2>
+        
+        <!-- Input Field (We use aura:id so the renderer can find it in the DOM) -->
+        <lightning:input 
+            aura:id="searchField" 
+            label="Enter Search Term" 
+            value="{!v.searchQuery}" 
+            placeholder="Type something..." />
+            
+        <div class="slds-m-top_medium">
+            <lightning:button 
+                label="Process Search" 
+                variant="brand" 
+                onclick="{!c.handleSearchClick}" />
+        </div>
+        
+        <!-- Output Result -->
+        <aura:if isTrue="{!not(empty(v.formattedQuery))}">
+            <p class="slds-m-top_medium slds-text-color_success">
+                <strong>Processed Output (Helper):</strong> {!v.formattedQuery}
+            </p>
+        </aura:if>
+    </div>
+</aura:component>
